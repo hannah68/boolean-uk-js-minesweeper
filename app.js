@@ -39,21 +39,22 @@ const minesweeperFn = (idx,mineBomb) => {
 // ======================================
 let count = 0;          
 const helperFn = (userInput,mineBomb) => {
-        // if you hit the bomb
-        if(mineBomb.indexOf(userInput) >= 0){
-            alert(`Oops! You Lost. You found ${count} empty spaces.`);
-        }
-        // if you dont hit the bomb
-        else if(mineBomb.indexOf(userInput) === -1 && guess >= 1){
-            count += 1
-            guess -= 1
-            if(guess === 0){
+    // if you hit the bomb
+    if(mineBomb.indexOf(userInput) >= 0){
+        alert(`Oops! You Lost. You found ${count} empty spaces.`);
+    }
+    // if you dont hit the bomb
+    else if(mineBomb.indexOf(userInput) === -1 && guess >= 1){
+        count += 1
+        guess -= 1
+        if(guess === 0){
                 return alert(`Congrats, You won the game`);
-            } 
-            let idx = Number(prompt(`Correct, choose another empty place. You have ${guess} guess. ${mineBomb}`));
-            // repeat the helper function with new user input(idx), until you hit the bomb or won the game
-            minesweeperFn(idx,mineBomb);
-        }
+        } 
+        let idx = Number(prompt(`Correct, choose another empty place. You have ${guess} guess.`));
+        console.log(mineBomb);
+        // repeat the helper function with new user input(idx), until you hit the bomb or won the game
+        minesweeperFn(idx,mineBomb);
+    }
 }
 
 helperFn(userInput,mineBomb)
